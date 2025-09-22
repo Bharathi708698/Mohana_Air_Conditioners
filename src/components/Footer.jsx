@@ -122,7 +122,7 @@ const Footer = () => {
             <div className="flex items-center justify-center space-x-6 text-sm text-muted-foreground">
               <span>
                 <a
-                  href="/privacy-policy"
+                  href="/Mohana_Air_Conditioners/privacy-policy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className=" font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:bg-primary/10"
@@ -132,7 +132,7 @@ const Footer = () => {
               </span>
               <span>
                 <a
-                  href="/terms-and-conditions"
+                  href="/Mohana_Air_Conditioners/terms-and-conditions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className=" font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:bg-primary/10"
