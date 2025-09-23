@@ -94,19 +94,35 @@ const Navigation = () => {
         >
           {!isScrolled ? (
             <div className="w-40 h-10 rounded-full flex items-center justify-center shrink-0">
-              <img
-                src={Logo}
-                alt="Mohana Air Conditioners Logo"
-                className="rounded-none object-cover w-50 h-15"
-              />
+              <a
+                key={"Home"}
+                href={"#hero"}
+                onClick={() => setActiveSection("home")}
+                aria-label={"Home"}
+                title={"Home"}
+              >
+                <img
+                  src={Logo}
+                  alt="Mohana Air Conditioners Logo"
+                  className="rounded-none object-cover w-35 h-12"
+                />
+              </a>
             </div>
           ) : (
             <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-              <img
-                src={Logo_Alone}
-                alt="Mohana Air Conditioners Logo"
-                className="rounded-none object-cover w-50 h-15"
-              />
+              <a
+                key={"Home"}
+                href={"#hero"}
+                onClick={() => setActiveSection("home")}
+                aria-label={"Home"}
+                title={"Home"}
+              >
+                <img
+                  src={Logo_Alone}
+                  alt="Mohana Air Conditioners Logo"
+                  className="rounded-none object-cover w-50 h-12"
+                />
+              </a>
             </div>
           )}
         </div>
@@ -154,8 +170,16 @@ const Navigation = () => {
       {/* Mobile header */}
       <nav className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-4 md:hidden backdrop-blur-md bg-white/10 border-b border-white/10 shadow-xl rounded-b-2xl">
         {/* Left: Logo */}
-        <div className="w-10 h-10 rounded-full flex items-center justify-center">
-          <img src={Logo_Alone} alt="Mohana Air Conditioners Logo" />
+        <div className="w-6 h-6 rounded-full flex items-center justify-center">
+          <a
+            key={"Home"}
+            href={"#hero"}
+            onClick={() => setActiveSection("home")}
+            aria-label={"Home"}
+            title={"Home"}
+          >
+            <img src={Logo_Alone} alt="Mohana Air Conditioners Logo" />
+          </a>
         </div>
 
         {/* Center: Nav icons */}

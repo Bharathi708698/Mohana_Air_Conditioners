@@ -24,7 +24,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center">
-              <div className="w-60 h-19 flex items-center justify-center">
+              <div className="w-60 h-15 flex items-center justify-center">
                 <img
                   src={Logo}
                   alt="Mohana Air Conditioners Logo"

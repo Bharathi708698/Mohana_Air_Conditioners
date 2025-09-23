@@ -35,7 +35,7 @@ const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    slidesToSlide: 1, // slide one card at a time
+    slidesToSlide: 1,
   },
   tablet: {
     breakpoint: { max: 1024, min: 640 },
@@ -78,7 +78,7 @@ const Testimonials = () => {
           responsive={responsive}
           infinite={true}
           autoPlay={true}
-          autoPlaySpeed={2000}
+          autoPlaySpeed={3000}
           keyBoardControl={true}
           containerClass="carousel-container"
           removeArrowOnDeviceType={["mobile"]}
@@ -90,7 +90,7 @@ const Testimonials = () => {
           {testimonials.map((t, idx) => (
             <Card
               key={idx}
-              className="glass-card p-6 flex flex-col justify-between rounded-3xl min-h-[180px] w-full"
+              className="p-6 flex flex-col justify-between rounded-3xl min-h-[180px] w-full bg-card shadow-md transition-none"
             >
               <div className="mb-4 space-y-3 overflow-y-auto max-h-40 pr-2 custom-scroll">
                 <p className="text-muted-foreground text-base leading-relaxed">
@@ -99,7 +99,6 @@ const Testimonials = () => {
               </div>
               <div className="mt-4 border-t border-border pt-4">
                 <h4 className="text-lg font-semibold">{t.name}</h4>
-                <p className="text-sm text-muted-foreground">{t.location}</p>
                 <div className="flex gap-1 mt-2">
                   {[...Array(t.rating)].map((_, i) => (
                     <Star
