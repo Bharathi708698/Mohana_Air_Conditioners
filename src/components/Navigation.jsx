@@ -1,5 +1,154 @@
-import { useState, useEffect } from "react";
-import { Phone, Home, Settings, User, MessageCircle, Info } from "lucide-react";
+// import { useState, useEffect, useRef } from "react";
+// import { Phone, Home, Wrench, User, Quote, MapPin } from "lucide-react";
+// import { Button } from "./ui/button";
+// import Logo from "../assets/Mohana_logo.png";
+// import Logo_Alone from "../assets/Mohana_logo_alone.png";
+
+// const Navigation = () => {
+//   const [isScrolled, setIsScrolled] = useState(false);
+//   const [activeSection, setActiveSection] = useState("home");
+//   const isScrolling = useRef(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setIsScrolled(window.scrollY > 50);
+
+//       if (isScrolling.current) return; // Ignore scroll events while scrolling via click
+
+//       const sections = ["home", "services", "about", "testimonial", "contact"];
+//       const scrollPosition = window.scrollY + 100;
+
+//       for (const section of sections) {
+//         const element = document.getElementById(section === "home" ? "hero" : section);
+//         if (element) {
+//           const offsetTop = element.offsetTop;
+//           const offsetHeight = element.offsetHeight;
+
+//           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+//             setActiveSection(section);
+//             break;
+//           }
+//         }
+//       }
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     handleScroll();
+
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   // Smooth scroll function
+//   const scrollToSection = (id) => {
+//     const element = document.getElementById(id === "home" ? "hero" : id);
+//     if (element) {
+//       isScrolling.current = true; // Start smooth scroll
+//       element.scrollIntoView({ behavior: "smooth" });
+//       setActiveSection(id);
+
+//       // Approximate scroll duration, then allow handleScroll to update again
+//       setTimeout(() => {
+//         isScrolling.current = false;
+//       }, 600); // 600ms is typical smooth scroll duration
+//     }
+//   };
+
+//   const navItems = [
+//     { label: "Home", id: "home", icon: <Home className="w-5 h-5" /> },
+//     { label: "Services", id: "services", icon: <Wrench className="w-5 h-5" /> },
+//     { label: "About", id: "about", icon: <User className="w-5 h-5" /> },
+//     { label: "Testimonial", id: "testimonial", icon: <Quote className="w-5 h-5" /> },
+//     { label: "Contact", id: "contact", icon: <MapPin className="w-5 h-5" /> },
+//   ];
+
+//   return (
+//     <>
+//       {/* Desktop Navigation */}
+//       <nav
+//         className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur-md bg-white/10 border border-white/10 shadow-xl transition-all duration-500
+//           ${isScrolled ? "max-w-[90%] rounded-2xl h-16 scale-95" : "max-w-full rounded-2xl h-20 scale-100"}
+//           hidden md:flex items-center justify-between px-6 lg:px-10
+//         `}
+//       >
+//         {/* Left Logo */}
+//         <div
+//           className={`flex items-center transition-all duration-300 ${isScrolled ? "w-14" : "min-w-[100px] space-x-4"}`}
+//         >
+//           <div
+//             className={isScrolled ? "w-10 h-10 cursor-pointer" : "w-40 h-10 cursor-pointer"}
+//             onClick={() => scrollToSection("home")}
+//           >
+//             <img src={isScrolled ? Logo_Alone : Logo} alt="Mohana AC Logo" className="object-cover w-full h-full" />
+//           </div>
+//         </div>
+
+//         {/* Center nav items */}
+//         <div className="flex-1 flex justify-center space-x-6 px-4">
+//           {navItems.map((item) => (
+//             <button
+//               key={item.label}
+//               onClick={() => scrollToSection(item.id)}
+//               className={`relative text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-300
+//                 ${activeSection === item.id
+//                   ? "text-primary bg-white/10 backdrop-blur-md shadow-lg scale-105"
+//                   : "text-foreground hover:text-primary hover:bg-white/10 hover:backdrop-blur-md hover:shadow-md hover:scale-105"
+//                 }`}
+//             >
+//               {item.label}
+//               {activeSection === item.id && (
+//                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-sm -z-10 animate-pulse"></div>
+//               )}
+//             </button>
+//           ))}
+//         </div>
+
+//         {/* Right call button */}
+//         <a href="tel:+917338965589">
+//           <Button className={`btn-primary flex items-center space-x-3 ${isScrolled ? "w-12 px-0 justify-center" : "px-6"}`}>
+//             <Phone className="w-5 h-5 md:w-6 md:h-6" />
+//             {!isScrolled && <span className="hidden lg:inline select-none">+91 73389 65589</span>}
+//           </Button>
+//         </a>
+//       </nav>
+
+//       {/* Mobile Navigation */}
+//       <nav className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-4 md:hidden backdrop-blur-md bg-white/10 border-b border-white/10 shadow-xl rounded-b-2xl">
+//         <div className="w-8 h-9 cursor-pointer" onClick={() => scrollToSection("home")}>
+//           <img src={Logo_Alone} alt="Logo" className="w-full h-full" />
+//         </div>
+
+//         <div className="flex space-x-6">
+//           {navItems.map((item) => (
+//             <button
+//               key={item.label}
+//               onClick={() => scrollToSection(item.id)}
+//               className={`p-2 rounded-full transition-all duration-300 ${
+//                 activeSection === item.id
+//                   ? "text-primary glass-light shadow-lg scale-105"
+//                   : "text-muted-foreground hover:text-primary hover:glass-light hover:scale-105"
+//               }`}
+//             >
+//               {item.icon}
+//             </button>
+//           ))}
+//         </div>
+
+//         <a href="tel:+917338965589">
+//           <Button className="btn-primary w-12 h-12 flex items-center justify-center">
+//             <Phone className="w-5 h-5" />
+//           </Button>
+//         </a>
+//       </nav>
+//     </>
+//   );
+// };
+
+// export default Navigation;
+
+
+
+import { useState, useEffect, useRef } from "react";
+import { Phone, Home, Wrench, User, Quote, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import Logo from "../assets/Mohana_logo.png";
 import Logo_Alone from "../assets/Mohana_logo_alone.png";
@@ -7,26 +156,25 @@ import Logo_Alone from "../assets/Mohana_logo_alone.png";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const isScrolling = useRef(false);
+  const scrollTimeout = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
+      if (isScrolling.current) return; // Ignore scroll updates while programmatically scrolling
+
       const sections = ["home", "services", "about", "testimonial", "contact"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
-        const element = document.getElementById(
-          section === "home" ? "hero" : section
-        );
+        const element = document.getElementById(section === "home" ? "hero" : section);
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
 
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
           }
@@ -35,180 +183,107 @@ const Navigation = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id === "home" ? "hero" : id);
+    if (!element) return;
+
+    isScrolling.current = true;
+    element.scrollIntoView({ behavior: "smooth" });
+    setActiveSection(id);
+
+    // Clear previous timeout
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
+    // Allow scrolling updates after animation finishes
+    scrollTimeout.current = setTimeout(() => {
+      isScrolling.current = false;
+    }, 700); // slightly longer for mobile smooth scrolling
+  };
+
   const navItems = [
-    {
-      label: "Home",
-      href: "#hero",
-      id: "home",
-      icon: <Home className="w-5 h-5" />,
-    },
-    {
-      label: "Services",
-      href: "#services",
-      id: "services",
-      icon: <Settings className="w-5 h-5" />,
-    },
-    {
-      label: "About",
-      href: "#about",
-      id: "about",
-      icon: <User className="w-5 h-5" />,
-    },
-    {
-      label: "Testimonial",
-      href: "#testimonial",
-      id: "testimonial",
-      icon: <MessageCircle className="w-5 h-5" />,
-    },
-    {
-      label: "Contact",
-      href: "#contact",
-      id: "contact",
-      icon: <Info className="w-5 h-5" />,
-    },
+    { label: "Home", id: "home", icon: <Home className="w-5 h-5" /> },
+    { label: "Services", id: "services", icon: <Wrench className="w-5 h-5" /> },
+    { label: "About", id: "about", icon: <User className="w-5 h-5" /> },
+    { label: "Testimonial", id: "testimonial", icon: <Quote className="w-5 h-5" /> },
+    { label: "Contact", id: "contact", icon: <MapPin className="w-5 h-5" /> },
   ];
 
   return (
     <>
-      {/* Desktop and tablet header */}
+      {/* Desktop Navigation */}
       <nav
         className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur-md bg-white/10 border border-white/10 shadow-xl transition-all duration-500
-
-          ${
-            isScrolled
-              ? "max-w-[90%] rounded-2xl h-16 scale-95"
-              : "max-w-full rounded-2xl h-20 scale-100"
-          }
-          hidden md:flex items-center justify-between px-6 lg:px-10`}
+          ${isScrolled ? "max-w-[90%] rounded-2xl h-16 scale-95" : "max-w-full rounded-2xl h-20 scale-100"}
+          hidden md:flex items-center justify-between px-6 lg:px-10
+        `}
       >
-        {/* Left: Logo + Company Name (auto-resizes) */}
-        <div
-          className={`flex items-center transition-all duration-300 ${
-            isScrolled ? "w-14" : "min-w-[100px] space-x-4"
-          }`}
-        >
-          {!isScrolled ? (
-            <div className="w-40 h-10 rounded-full flex items-center justify-center shrink-0">
-              <a
-                key={"Home"}
-                href={"#hero"}
-                onClick={() => setActiveSection("home")}
-                aria-label={"Home"}
-                title={"Home"}
-              >
-                <img
-                  src={Logo}
-                  alt="Mohana Air Conditioners Logo"
-                  className="rounded-none object-cover w-35 h-12"
-                />
-              </a>
-            </div>
-          ) : (
-            <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-              <a
-                key={"Home"}
-                href={"#hero"}
-                onClick={() => setActiveSection("home")}
-                aria-label={"Home"}
-                title={"Home"}
-              >
-                <img
-                  src={Logo_Alone}
-                  alt="Mohana Air Conditioners Logo"
-                  className="rounded-none object-cover w-50 h-12"
-                />
-              </a>
-            </div>
-          )}
+        <div className={`flex items-center transition-all duration-300 ${isScrolled ? "w-14" : "min-w-[100px] space-x-4"}`}>
+          <div
+            className={isScrolled ? "w-10 h-10 cursor-pointer" : "w-40 h-10 cursor-pointer"}
+            onClick={() => scrollToSection("home")}
+          >
+            <img src={isScrolled ? Logo_Alone : Logo} alt="Mohana AC Logo" className="object-cover w-full h-full" />
+          </div>
         </div>
 
-        {/* Center: Navigation items */}
         <div className="flex-1 flex justify-center space-x-6 px-4">
           {navItems.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
+              onClick={() => scrollToSection(item.id)}
               className={`relative text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-300
-  ${
-    activeSection === item.id
-      ? "text-primary bg-white/10 backdrop-blur-md shadow-lg scale-105"
-      : "text-foreground hover:text-primary hover:bg-white/10 hover:backdrop-blur-md hover:shadow-md hover:scale-105"
-  }`}
-              onClick={() => setActiveSection(item.id)}
+                ${activeSection === item.id
+                  ? "text-primary bg-white/10 backdrop-blur-md shadow-lg scale-105"
+                  : "text-foreground hover:text-primary hover:bg-white/10 hover:backdrop-blur-md hover:shadow-md hover:scale-105"
+                }`}
             >
               {item.label}
               {activeSection === item.id && (
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-sm -z-10 animate-pulse"></div>
               )}
-            </a>
+            </button>
           ))}
         </div>
 
-        {/* Right: Call button */}
-        <div className={`flex items-center ${isScrolled ? "ml-4" : "ml-8"}`}>
-          <Button
-            className={`btn-primary flex items-center space-x-3 transition-all duration-300 ${
-              isScrolled ? "w-12 px-0 justify-center" : "px-6"
-            }`}
-            aria-label="Call now"
-          >
+        <a href="tel:+917338965589">
+          <Button className={`btn-primary flex items-center space-x-3 ${isScrolled ? "w-12 px-0 justify-center" : "px-6"}`}>
             <Phone className="w-5 h-5 md:w-6 md:h-6" />
-            {!isScrolled && (
-              <span className="hidden lg:inline select-none">
-                +91 73389 65589
-              </span>
-            )}
+            {!isScrolled && <span className="hidden lg:inline select-none">+91 73389 65589</span>}
           </Button>
-        </div>
+        </a>
       </nav>
 
-      {/* Mobile header */}
+      {/* Mobile Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-4 md:hidden backdrop-blur-md bg-white/10 border-b border-white/10 shadow-xl rounded-b-2xl">
-        {/* Left: Logo */}
-        <div className="w-6 h-6 rounded-full flex items-center justify-center">
-          <a
-            key={"Home"}
-            href={"#hero"}
-            onClick={() => setActiveSection("home")}
-            aria-label={"Home"}
-            title={"Home"}
-          >
-            <img src={Logo_Alone} alt="Mohana Air Conditioners Logo" />
-          </a>
+        <div className="w-8 h-9 cursor-pointer" onClick={() => scrollToSection("home")}>
+          <img src={Logo_Alone} alt="Logo" className="w-full h-full" />
         </div>
 
-        {/* Center: Nav icons */}
         <div className="flex space-x-6">
           {navItems.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
+              onClick={() => scrollToSection(item.id)}
               className={`p-2 rounded-full transition-all duration-300 ${
                 activeSection === item.id
                   ? "text-primary glass-light shadow-lg scale-105"
                   : "text-muted-foreground hover:text-primary hover:glass-light hover:scale-105"
               }`}
-              onClick={() => setActiveSection(item.id)}
-              aria-label={item.label}
-              title={item.label}
             >
               {item.icon}
-            </a>
+            </button>
           ))}
         </div>
 
-        {/* Right: Call Button (icon only) */}
-        <Button
-          className="btn-primary w-12 h-12 flex items-center justify-center"
-          aria-label="Call now"
-        >
-          <Phone className="w-5 h-5" />
-        </Button>
+        <a href="tel:+917338965589">
+          <Button className="btn-primary w-12 h-12 flex items-center justify-center">
+            <Phone className="w-5 h-5" />
+          </Button>
+        </a>
       </nav>
     </>
   );

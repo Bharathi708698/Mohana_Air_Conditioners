@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Clock, Heart } from "lucide-react";
 import Logo from "../assets/Mohana_logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -111,36 +112,29 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-glass-border text-center space-y-3">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <p className="text-sm text-muted-foreground flex items-center justify-center">
-              © {currentYear} Mohana AC Services. Made with{" "}
-              <Heart
-                className="w-4 h-4 text-red-400 mx-1"
-                fill="currentColor"
-              />
-              for better homes.
-            </p>
             <div className="flex items-center justify-center space-x-6 text-sm text-muted-foreground">
               <span>
-                <a
-                  href="/Mohana_Air_Conditioners/privacy-policy"
-                  target="_blank"
+                <Link
+                  to="/privacy-policy"
                   rel="noopener noreferrer"
                   className=" font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:bg-primary/10"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </span>
               <span>
-                <a
-                  href="/Mohana_Air_Conditioners/terms-and-conditions"
-                  target="_blank"
+                <Link
+                  to="/terms-and-conditions"
                   rel="noopener noreferrer"
                   className=" font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:bg-primary/10"
                 >
                   Terms And Conditions
-                </a>
+                </Link>
               </span>
             </div>
+            <p className="text-sm text-muted-foreground flex items-center justify-center">
+              © {currentYear} Mohana AC Services.
+            </p>
           </div>
 
           <p className="text-sm text-muted-foreground">
@@ -150,7 +144,8 @@ const Footer = () => {
               rel="noopener noreferrer"
               className=" font-medium transition-all duration-300 px-2 py-1 rounded-lg hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:bg-primary/10"
             >
-              Developed & Designed by Vijaya Tech solutions with ❣️
+              Developed & Designed by{" "}
+              <span className="text-primary">Vijaya Tech solutions</span>
             </a>
           </p>
         </div>

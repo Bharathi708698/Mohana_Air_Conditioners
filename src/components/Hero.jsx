@@ -7,6 +7,14 @@ const Hero = () => {
     { icon: Shield, label: "100% Guaranteed", color: "text-green-400" },
   ];
 
+  // Smooth scroll function
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -40,11 +48,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
             <Button
               className="btn-primary group"
-              onClick={() =>
-                document
-                  .getElementById("services")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => scrollToSection("services")} // <-- UPDATED
             >
               View Our Services
               <ArrowRight
@@ -131,9 +135,7 @@ const Hero = () => {
                     const message =
                       "Hi, I need appliance repair service. Please help!";
                     window.open(
-                      `https://wa.me/${phone}?text=${encodeURIComponent(
-                        message
-                      )}`,
+                      `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
                       "_blank"
                     );
                   }}

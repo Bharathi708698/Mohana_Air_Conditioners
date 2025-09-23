@@ -3,7 +3,7 @@ import { Toaster } from './components/ui/toaster';
 import { Toaster as Sonner } from './components/ui/sonner';
 import { TooltipProvider } from './components/ui/tooltip.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
@@ -16,14 +16,14 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
-          <Route path="/Mohana_Air_Conditioners" element={<Index />} />
-          <Route path="/Mohana_Air_Conditioners/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/Mohana_Air_Conditioners/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
