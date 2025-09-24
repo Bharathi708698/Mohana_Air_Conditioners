@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section
       id="privacy-policy"
@@ -90,8 +94,8 @@ const PrivacyPolicy = () => {
               8. Contact Us
             </h2>
             <p>
-              If you have any questions or requests related to privacy, reach
-              us at{" "}
+              If you have any questions or requests related to privacy, reach us
+              at{" "}
               <a
                 href="mailto:service@mohanaac.com"
                 className="text-primary underline hover:text-accent transition"
@@ -108,4 +112,3 @@ const PrivacyPolicy = () => {
 };
 
 export default PrivacyPolicy;
-

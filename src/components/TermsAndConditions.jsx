@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const TermsAndConditions = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section
       id="terms-and-conditions"
@@ -17,7 +21,9 @@ const TermsAndConditions = () => {
               1. Service Booking
             </h2>
             <p>
-              Services are booked only through direct phone or WhatsApp communication. Submitting a message does not confirm the appointment until manually acknowledged.
+              Services are booked only through direct phone or WhatsApp
+              communication. Submitting a message does not confirm the
+              appointment until manually acknowledged.
             </p>
           </div>
 
@@ -26,7 +32,8 @@ const TermsAndConditions = () => {
               2. Customer Responsibilities
             </h2>
             <p>
-              Customers must provide accurate location and appliance details. Any delay caused due to misinformation is not our responsibility.
+              Customers must provide accurate location and appliance details.
+              Any delay caused due to misinformation is not our responsibility.
             </p>
           </div>
 
@@ -35,7 +42,8 @@ const TermsAndConditions = () => {
               3. Payment Terms
             </h2>
             <p>
-              Payment is due after service completion. We accept UPI or cash. Pricing is discussed upfront before work begins.
+              Payment is due after service completion. We accept UPI or cash.
+              Pricing is discussed upfront before work begins.
             </p>
           </div>
 
@@ -44,7 +52,9 @@ const TermsAndConditions = () => {
               4. Warranty Policy
             </h2>
             <p>
-              Warranty varies depending on the service and will be mentioned before completion. No universal warranty is provided unless agreed.
+              Warranty varies depending on the service and will be mentioned
+              before completion. No universal warranty is provided unless
+              agreed.
             </p>
           </div>
 
@@ -53,7 +63,9 @@ const TermsAndConditions = () => {
               5. Use of Photos
             </h2>
             <p>
-              We may take photos of appliances before or after service for our internal records or to upload on Google Maps. These will never include personal info.
+              We may take photos of appliances before or after service for our
+              internal records or to upload on Google Maps. These will never
+              include personal info.
             </p>
           </div>
 
@@ -62,7 +74,9 @@ const TermsAndConditions = () => {
               6. Testimonials Display
             </h2>
             <p>
-              Reviews shared on WhatsApp or Google Maps may be displayed on our website including your name and feedback. You may request removal anytime by contacting us.
+              Reviews shared on WhatsApp or Google Maps may be displayed on our
+              website including your name and feedback. You may request removal
+              anytime by contacting us.
             </p>
           </div>
 
@@ -71,7 +85,8 @@ const TermsAndConditions = () => {
               7. Limited Liability
             </h2>
             <p>
-              We are not responsible for issues unrelated to the service performed. Liability is limited strictly to the scope of work.
+              We are not responsible for issues unrelated to the service
+              performed. Liability is limited strictly to the scope of work.
             </p>
           </div>
 
@@ -80,7 +95,8 @@ const TermsAndConditions = () => {
               8. Right to Refuse Service
             </h2>
             <p>
-              We reserve the right to decline service in situations involving unsafe environments, rude behavior, or suspicious activity.
+              We reserve the right to decline service in situations involving
+              unsafe environments, rude behavior, or suspicious activity.
             </p>
           </div>
 
@@ -89,7 +105,8 @@ const TermsAndConditions = () => {
               9. Updates to Terms
             </h2>
             <p>
-              These terms may be updated anytime without notice. Please check this page periodically for any changes.
+              These terms may be updated anytime without notice. Please check
+              this page periodically for any changes.
             </p>
           </div>
         </div>
