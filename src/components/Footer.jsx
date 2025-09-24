@@ -1,16 +1,34 @@
-import { Phone, Mail, MapPin, Clock, Heart } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import Logo from "../assets/Mohana_logo.png";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+   const isScrolling = useRef(false);
+    const scrollTimeout = useRef(null);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id === "home" ? "hero" : id);
+    if (!element) return;
+
+    isScrolling.current = true;
+    element.scrollIntoView({ behavior: "smooth" });
+
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
+    scrollTimeout.current = setTimeout(() => {
+      isScrolling.current = false;
+    }, 700); 
+  };
+
   const quickLinks = [
-    { label: "AC Services", href: "#services" },
-    { label: "Refrigerator Repair", href: "#services" },
-    { label: "Washing Machine", href: "#services" },
-    { label: "Water Purifier", href: "#services" },
-    { label: "Emergency Service", href: "#contact" },
+    { label: "AC Services", id: "services" },
+    { label: "Refrigerator Repair", id: "services" },
+    { label: "Washing Machine", id: "services" },
+    { label: "Water Purifier", id: "services" },
+    { label: "Emergency Service", id: "contact" },
   ];
 
   return (
@@ -54,19 +72,20 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-6">
+          <div id="services" className="space-y-6 scroll-mt-20">
             <h3 className="text-lg font-semibold text-foreground">
               Our Services
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <button
+                    key={link.label}
+                    onClick={() => scrollToSection(link.id)}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
